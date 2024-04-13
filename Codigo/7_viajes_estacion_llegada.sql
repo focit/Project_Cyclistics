@@ -18,7 +18,7 @@ SELECT * FROM viajes_2019_oct_dic
 SELECT
     to_station_name,
     SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS total_viajes_customer,
-    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_suscriber
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_subscriber
 FROM 
     viajes_2019_anual
 GROUP BY
@@ -46,77 +46,77 @@ las estaciones más transitadas por los Customers para que adquieran su mebresia
   {
     "to_station_name": "Streeter Dr & Grand Ave",
     "total_viajes_customer": "53797",
-    "total_viajes_suscriber": "11499"
+    "total_viajes_subscriber": "11499"
   },
   {
     "to_station_name": "Lake Shore Dr & Monroe St",
     "total_viajes_customer": "25218",
-    "total_viajes_suscriber": "8267"
+    "total_viajes_subscriber": "8267"
   },
   {
     "to_station_name": "Millennium Park",
     "total_viajes_customer": "19972",
-    "total_viajes_suscriber": "10125"
+    "total_viajes_subscriber": "10125"
   },
   {
     "to_station_name": "Michigan Ave & Oak St",
     "total_viajes_customer": "18830",
-    "total_viajes_suscriber": "11629"
+    "total_viajes_subscriber": "11629"
   },
   {
     "to_station_name": "Lake Shore Dr & North Blvd",
     "total_viajes_customer": "18809",
-    "total_viajes_suscriber": "15261"
+    "total_viajes_subscriber": "15261"
   },
   {
     "to_station_name": "Theater on the Lake",
     "total_viajes_customer": "15238",
-    "total_viajes_suscriber": "14127"
+    "total_viajes_subscriber": "14127"
   },
   {
     "to_station_name": "Shedd Aquarium",
     "total_viajes_customer": "13280",
-    "total_viajes_suscriber": "4738"
+    "total_viajes_subscriber": "4738"
   },
   {
     "to_station_name": "Michigan Ave & Washington St",
     "total_viajes_customer": "10468",
-    "total_viajes_suscriber": "23931"
+    "total_viajes_subscriber": "23931"
   },
   {
     "to_station_name": "Adler Planetarium",
     "total_viajes_customer": "8652",
-    "total_viajes_suscriber": "4002"
+    "total_viajes_subscriber": "4002"
   },
   {
     "to_station_name": "Dusable Harbor",
     "total_viajes_customer": "7782",
-    "total_viajes_suscriber": "3956"
+    "total_viajes_subscriber": "3956"
   },
   {
     "to_station_name": "Michigan Ave & 8th St",
     "total_viajes_customer": "7689",
-    "total_viajes_suscriber": "3525"
+    "total_viajes_subscriber": "3525"
   },
   {
     "to_station_name": "Montrose Harbor",
     "total_viajes_customer": "6244",
-    "total_viajes_suscriber": "4487"
+    "total_viajes_subscriber": "4487"
   },
   {
     "to_station_name": "Indiana Ave & Roosevelt Rd",
     "total_viajes_customer": "6044",
-    "total_viajes_suscriber": "10835"
+    "total_viajes_subscriber": "10835"
   },
   {
     "to_station_name": "Clark St & Armitage Ave",
     "total_viajes_customer": "5862",
-    "total_viajes_suscriber": "12616"
+    "total_viajes_subscriber": "12616"
   },
   {
     "to_station_name": "Wabash Ave & Grand Ave",
     "total_viajes_customer": "5772",
-    "total_viajes_suscriber": "14539"
+    "total_viajes_subscriber": "14539"
   }
 ]
 */

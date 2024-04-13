@@ -18,7 +18,7 @@ SELECT * FROM viajes_2019_oct_dic
 SELECT
     Month,
     SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS total_viajes_customer,
-    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_suscriber
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_subscriber
 FROM 
     viajes_2019_anual
 GROUP BY
@@ -46,57 +46,57 @@ del servicio entre los Customers y compensar la disminución estacional en la de
   {
     "month": 1,
     "total_viajes_customer": "4602",
-    "total_viajes_suscriber": "98670"
+    "total_viajes_subscriber": "98670"
   },
   {
     "month": 2,
     "total_viajes_customer": "2638",
-    "total_viajes_suscriber": "93548"
+    "total_viajes_subscriber": "93548"
   },
   {
     "month": 3,
     "total_viajes_customer": "15923",
-    "total_viajes_suscriber": "149688"
+    "total_viajes_subscriber": "149688"
   },
   {
     "month": 4,
     "total_viajes_customer": "47744",
-    "total_viajes_suscriber": "217566"
+    "total_viajes_subscriber": "217566"
   },
   {
     "month": 5,
     "total_viajes_customer": "81624",
-    "total_viajes_suscriber": "285834"
+    "total_viajes_subscriber": "285834"
   },
   {
     "month": 6,
     "total_viajes_customer": "106566",
-    "total_viajes_suscriber": "309241"
+    "total_viajes_subscriber": "309241"
   },
   {
     "month": 7,
     "total_viajes_customer": "175632",
-    "total_viajes_suscriber": "381683"
+    "total_viajes_subscriber": "381683"
   },
   {
     "month": 8,
     "total_viajes_customer": "159395",
-    "total_viajes_suscriber": "331865"
+    "total_viajes_subscriber": "331865"
   },
   {
     "month": 10,
     "total_viajes_customer": "71035",
-    "total_viajes_suscriber": "300751"
+    "total_viajes_subscriber": "300751"
   },
   {
     "month": 11,
     "total_viajes_customer": "18729",
-    "total_viajes_suscriber": "158447"
+    "total_viajes_subscriber": "158447"
   },
   {
     "month": 12,
     "total_viajes_customer": "16430",
-    "total_viajes_suscriber": "138662"
+    "total_viajes_subscriber": "138662"
   }
 ]
 */

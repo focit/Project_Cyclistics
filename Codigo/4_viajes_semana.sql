@@ -18,10 +18,10 @@ SELECT * FROM viajes_2019_oct_dic
 
 SELECT
     weekday,
-    SUM( CASE WHEN usertype = 'Customer' THEN ride_length ELSE NULL END) AS tiempo_recorrido_customer,
-    SUM( CASE WHEN usertype = 'Subscriber' THEN ride_length ELSE NULL END) AS tiempo_recorrido_subscriber,
+    AVG( CASE WHEN usertype = 'Customer' THEN ride_length ELSE NULL END) AS promedio_recorrido_customer,
+    AVG( CASE WHEN usertype = 'Subscriber' THEN ride_length ELSE NULL END) AS promedio_recorrido_subscriber,
     SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS total_viajes_customer,
-    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_suscriber
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_subscriber
 FROM 
     viajes_2019_anual
 GROUP BY
@@ -37,114 +37,115 @@ donde los Customers tienen un tiempo promedio de recorrido significativamente m�
 
 
 Conclusiones:
-- Esto puede sugerir que los Subscribers tienen rutas más directas y probablemente viajen distancias más cortas en comparación 
-con los Customers, que pueden ser turistas o usuarios ocasionales que exploran la ciudad.
+- Esto puede sugerir que los usuarios Subscribers tienen rutas más directas y probablemente viajen distancias más cortas para ir a su
+trabajo o realizar recados rápidos ya que los días con más recorridos son en días laborales.
+- En cambio, los usuarios Customers realizan recorridos con un promedio de tiempo más largo y un aumento de recorridos en fines de semana, 
+lo que se puede concluir que sean recorridos para explorar la ciudad o de recreacion.
 
 [
   {
     "weekday": 1,
-    "tiempo_recorrido_customer": {
-      "hours": 98161,
-      "minutes": 6,
-      "seconds": 25
+    "promedio_recorrido_customer": {
+      "minutes": 42,
+      "seconds": 17,
+      "milliseconds": 336.902
     },
-    "tiempo_recorrido_subscriber": {
-      "hours": 52004,
-      "minutes": 32,
-      "seconds": 8
+    "promedio_recorrido_subscriber": {
+      "minutes": 14,
+      "seconds": 20,
+      "milliseconds": 642.06
     },
     "total_viajes_customer": "139272",
-    "total_viajes_suscriber": "217531"
+    "total_viajes_subscriber": "217531"
   },
   {
     "weekday": 2,
-    "tiempo_recorrido_customer": {
-      "hours": 51327,
-      "minutes": 34,
-      "seconds": 19
+    "promedio_recorrido_customer": {
+      "minutes": 39,
+      "seconds": 45,
+      "milliseconds": 972.561
     },
-    "tiempo_recorrido_subscriber": {
-      "hours": 81430,
-      "minutes": 20,
-      "seconds": 55
+    "promedio_recorrido_subscriber": {
+      "minutes": 12,
+      "seconds": 35,
+      "milliseconds": 225.937
     },
     "total_viajes_customer": "77444",
-    "total_viajes_suscriber": "388161"
+    "total_viajes_subscriber": "388161"
   },
   {
     "weekday": 3,
-    "tiempo_recorrido_customer": {
-      "hours": 46988,
-      "minutes": 58,
-      "seconds": 26
+    "promedio_recorrido_customer": {
+      "minutes": 39,
+      "milliseconds": 995.101
     },
-    "tiempo_recorrido_subscriber": {
-      "hours": 88916,
-      "minutes": 1,
-      "seconds": 38
+    "promedio_recorrido_subscriber": {
+      "minutes": 12,
+      "seconds": 36,
+      "milliseconds": 54.736
     },
     "total_viajes_customer": "72260",
-    "total_viajes_suscriber": "423379"
+    "total_viajes_subscriber": "423379"
   },
   {
     "weekday": 4,
-    "tiempo_recorrido_customer": {
-      "hours": 46633,
-      "minutes": 24,
-      "seconds": 30
+    "promedio_recorrido_customer": {
+      "minutes": 38,
+      "seconds": 18,
+      "milliseconds": 910.936
     },
-    "tiempo_recorrido_subscriber": {
-      "hours": 87916,
-      "minutes": 16,
-      "seconds": 57
+    "promedio_recorrido_subscriber": {
+      "minutes": 12,
+      "seconds": 38,
+      "milliseconds": 816.617
     },
     "total_viajes_customer": "73026",
-    "total_viajes_suscriber": "417095"
+    "total_viajes_subscriber": "417095"
   },
   {
     "weekday": 5,
-    "tiempo_recorrido_customer": {
-      "hours": 53053,
-      "minutes": 43,
-      "seconds": 18
+    "promedio_recorrido_customer": {
+      "minutes": 39,
+      "seconds": 21,
+      "milliseconds": 383.225
     },
-    "tiempo_recorrido_subscriber": {
-      "hours": 85451,
-      "minutes": 25,
-      "seconds": 5
+    "promedio_recorrido_subscriber": {
+      "minutes": 12,
+      "seconds": 39,
+      "milliseconds": 433.15
     },
     "total_viajes_customer": "80882",
-    "total_viajes_suscriber": "405072"
+    "total_viajes_subscriber": "405072"
   },
   {
     "weekday": 6,
-    "tiempo_recorrido_customer": {
-      "hours": 64588,
-      "minutes": 7,
-      "seconds": 13
+    "promedio_recorrido_customer": {
+      "minutes": 39,
+      "seconds": 46,
+      "milliseconds": 358.564
     },
-    "tiempo_recorrido_subscriber": {
-      "hours": 79858,
-      "minutes": 46,
-      "seconds": 22
+    "promedio_recorrido_subscriber": {
+      "minutes": 12,
+      "seconds": 33,
+      "milliseconds": 767.854
     },
     "total_viajes_customer": "97436",
-    "total_viajes_suscriber": "381406"
+    "total_viajes_subscriber": "381406"
   },
   {
     "weekday": 7,
-    "tiempo_recorrido_customer": {
-      "hours": 112956,
-      "minutes": 29,
-      "seconds": 7
+    "promedio_recorrido_customer": {
+      "minutes": 42,
+      "seconds": 21,
+      "milliseconds": 552.688
     },
-    "tiempo_recorrido_subscriber": {
-      "hours": 56430,
-      "minutes": 40,
-      "seconds": 59
+    "promedio_recorrido_subscriber": {
+      "minutes": 14,
+      "seconds": 30,
+      "milliseconds": 728.165
     },
     "total_viajes_customer": "159998",
-    "total_viajes_suscriber": "233311"
+    "total_viajes_subscriber": "233311"
   }
 ]
 */

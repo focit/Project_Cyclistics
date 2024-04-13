@@ -19,7 +19,7 @@ SELECT * FROM viajes_2019_oct_dic
 SELECT
     gender,
     SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS viajes_customer,
-    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS viajes_suscriber
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS viajes_subscriber
 FROM
     viajes_2019_anual
 WHERE
@@ -45,12 +45,12 @@ enfoque para aumentar la diversidad de usuarios y promover una mayor participaci
   {
     "gender": "Female",
     "viajes_customer": "103695",
-    "viajes_suscriber": "599795"
+    "viajes_subscriber": "599795"
   },
   {
     "gender": "Male",
     "viajes_customer": "164712",
-    "viajes_suscriber": "1847245"
+    "viajes_subscriber": "1847245"
   }
 ]
 */
