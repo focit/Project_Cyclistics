@@ -1,5 +1,5 @@
 /*
-Pregunta: ¿¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas de acuerdo a la estación que concluyen su recorrido?
+Pregunta: ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas de acuerdo a la estación que concluyen su recorrido?
 - Realizar un conteo de viajes dependiendo de las estaciones que llegaron.
 - Agruparlo con el nombre de las estaciones que llegaron.
 ¿Por qué? Observar las estaciones más utilizadas por cada tipo de usuario.

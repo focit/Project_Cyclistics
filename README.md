@@ -1,203 +1,358 @@
-### Introducción
+# Introducción
 
-¡Adéntrate en el mercado laboral de análisis de datos! Centrándose en roles de analista de datos, este proyecto explora los trabajos mejor remunerados, las habilidades más demandadas y dónde se encuentra la alta demanda con los altos salarios en análisis de datos.
+!Bienvenidos a un viaje fascinante a través de los datos de Cyclistics, donde las bicicletas no son medios de transporte sino de aventura¡ Descubriremos cuáles son las diferencias entre los clientes Customer y Subscriber, quieres prefieren utilizar los servicios de la empresa Cyclisticas para movilizarse a cualquier punto de la ciudad.
 
-¿Consultas SQL? Encuéntralas aquí: [codigo]()sql_project folder
+¿Consultas SQL? Encuéntralas aquí: [Análisis_cyclistics](analisis_cyclistics)
 
-Antecedentes
-Interesado en el análisis de datos decidí realizar una búsqueda más efectiva en este mercado laborar, este proyecto nació de un deseo de identificar las habilidades más demandadas y mejor pagadas, optimizando el trabajo de otros para encontrar trabajos óptimos, ya sea como analista de datos o como analista de datos junior. Los datos y las bases el proyecto provienen del Curso de SQL de Luke Barousse SQL Course. Está repleto de información sobre títulos de trabajo, salarios, ubicaciones y habilidades esenciales.
+
+# Antecedentes
+
+Este proyecto se origina de un caso práctico del **Certificado profesional de Análisis de datos de Google** para desarrollar y aplicar mis conocimientos y habilidades adquiridas. Mi labor como analista de datos es utilizar mis conocimientos en la recolección y observación de los datos. Para después realizar el análisis de los datos históricos de viajes en bicicleta y presentar los resultados con gráficos y tablas. 
+
+Cabe aclarar que Cyclistics es una empresa ficticia que se creó para este estudio de caso, así que los datos que recopilé provienen de [Motivate International Inc](https://divvy-tripdata.s3.amazonaws.com/index.html), quienes otorgaron la licencia para utilizar su base de datos.
 
 Las preguntas que quería responder a través de mis consultas SQL fueron:
-¿Cuáles son los trabajos de analista de datos junior mejor remunerados?
-¿Qué habilidades se requieren para estos trabajos mejor remunerados?
-¿Qué habilidades son más demandadas para los analistas de datos?
-¿Qué habilidades están asociadas con salarios más altos?
-¿Cuáles son las habilidades más óptimas para aprender?
-Herramientas que utilicé
-Para mi inmersión profunda en el mercado laboral de analistas de datos, aproveché el poder de varias herramientas clave:
+- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en la cantidad de viajes y el total del tiempo recorrido?
 
-SQL: La columna vertebral de mi análisis, que me permitió consultar la base de datos y descubrir ideas críticas.
-PostgreSQL: El sistema de gestión de bases de datos elegido, ideal para manejar los datos de publicaciones de empleo.
-Visual Studio Code: Mi herramienta principal para la gestión de bases de datos y la ejecución de consultas SQL.
-Git y GitHub: Esenciales para el control de versiones y compartir mis scripts y análisis SQL, asegurando la colaboración y el seguimiento del proyecto.
-El Análisis
-Cada consulta para este proyecto tuvo como objetivo investigar aspectos específicos del mercado laboral de analistas de datos. Así es como abordé cada pregunta:
+- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en cuanto al género?
+- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en cuanto a la edad de los usuarios?
+- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en el total de viajes realizados por día de la semana?
+- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en el total de viajes realizados por mes durante el 2019?
+- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas de acuerdo a la estación que parten su recorrido?
+- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas de acuerdo a la estación que concluyen su recorrido?
 
-1. Trabajos de Analista de Datos Mejor Remunerados
-Para identificar los roles mejor remunerados, filtré las posiciones de analista de datos junior por salario promedio anual y ubicación, centrándome en trabajos remotos. Esta consulta destaca las oportunidades de alto pago en el campo.
+## Sobre la empresa
+En 2016, Cyclistic lanzó una exitosa oferta de bicicletas compartidas. Desde entonces, el programa ha crecido hasta alcanzar una flota de 5.824 bicicletas que están geolocalizadas y bloqueadas en una red de 692 estaciones en todo Chicago. Las bicicletas se pueden desbloquear desde una estación y devolverse a cualquier otra estación del sistema en cualquier momento.
 
-SELECT
-    job_id,
-    company_dim.name,
-    job_title,
-    job_location,
-    job_schedule_type,
-    salary_year_avg,
-    job_posted_date
-FROM 
-    job_postings_fact
-LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
-WHERE
-    job_title LIKE '%Junior%Data_Analyst%' AND
-    job_location IN ('Anywhere') AND
-    salary_year_avg IS NOT NULL
-ORDER BY
-    salary_year_avg DESC
-LIMIT 10;
-Aquí tienes el desglose de los principales trabajos de analista de datos en 2023:
+Hasta ahora, la estrategia de marketing de Cyclistic se basaba en generar conciencia general y atraer a amplios segmentos de consumidores. El enfoque que ayudó a hacer esto posible fue la flexibilidad de sus planes de precios: pases de viaje único, pases de día completo y membresías anuales. Los clientes que compran pases de un solo viaje o de un día completo se denominan Customer. Los clientes que compran membresías anuales son Subscriber de Cyclistic.
 
-Amplio Rango Salarial: Los 10 roles de analista de datos junior mejor pagados van desde $52,500 hasta $80,000 USD anuales, lo que indica un potencial salarial significativo en el campo.
-Empleadores Diversos: Empresas como Coders Data, Morion Recruitment y Patterned Learning AI se encuentran entre aquellas que ofrecen salarios altos aun para un analista de datos junior, mostrando un interés amplio en diferentes industrias aún para puestos iniciales.
-Top Mejores Trabajos
+Los analistas financieros de Cyclistic han llegado a la conclusión de que los miembros anuales son mucho más rentables que los ciclistas ocasionales. Aunque la flexibilidad de precios ayuda a Cyclistic a atraer más clientes, Moreno (Director de Marketing) cree que maximizar el número de miembros anuales será clave para el crecimiento futuro. En lugar de crear una campaña de marketing dirigida a clientes completamente nuevos, Moreno cree que existe una muy buena posibilidad de convertir a los pasajeros ocasionales en miembros. Ella señala que los ciclistas ocasionales ya conocen el programa Cyclistic y han elegido Cyclistic para sus necesidades de movilidad.
 
-Gráfico de barras que visualiza el salario de los 10 mejores salarios para analistas de datos junior; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL
+Moreno se ha fijado un objetivo claro: diseñar estrategias de marketing destinadas a convertir a los pasajeros ocasionales en miembros anuales. Sin embargo, para lograrlo, el equipo de analistas de marketing necesita comprender mejor cómo difieren los miembros anuales y los usuarios ocasionales. Moreno y su equipo están interesados en analizar los datos históricos de viajes en bicicleta para identificar tendencias.
 
-2. Habilidades para Trabajos Mejor Remunerados
-Para comprender qué habilidades se requieren para los trabajos mejor remunerados, uní las publicaciones de trabajo con los datos de habilidades, proporcionando información sobre lo que los empleadores valoran para roles de alta remuneración.
+# Herramientas que utilicé
 
-WITH top_paying_job AS (
-    SELECT
-        job_id,
-        company_dim.name AS company_name,
-        job_title,
-        salary_year_avg
-    FROM 
-        job_postings_fact
-    LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
-    WHERE
-        job_title LIKE '%Junior%Data_Analyst%' AND
-        job_location IN ('Anywhere','Mexico') AND
-        salary_year_avg IS NOT NULL
-    ORDER BY
-        salary_year_avg DESC
-    LIMIT 10
+Para conocer las diferencias entre los usuarios Customer y Subscriber, aproveché el poder de varias herramientas clave:
+
+**Excel:**: Necesaria para la limpieza y la unficación de los datos de las cuatro tablas elegidas.
+**SQL:** La columna vertebral de mi análisis, que me permitió consultar la base de datos y descubrir ideas críticas.
+**PostgreSQL:** El sistema de gestión de bases de datos elegido, ideal para manejar los datos de los viajes realizados.
+**Visual Studio Code:** Mi herramienta principal para la gestión de bases de datos y la ejecución de consultas SQL.
+**Python y Matplotlib:**: Útiles para la creación de visualizaciones que representen las consultas y los resultados obtenidos.
+**Git y GitHub:** Esenciales para el control de versiones y compartir mis scripts y análisis SQL, asegurando la colaboración y el seguimiento del proyecto.
+
+# El Análisis
+
+Cada consulta para este proyecto tuvo como objetivo conocer las diferencias que hay entre los usuarios Customer y Subscriber que utilizaron el servicio en 2019.
+
+## 1. La cantidad de recorridos y el tiempo total que realizaron los Customer y los Subscriber
+
+Para identificar las diferencias en la cantidad de recorridos y el tiempo total de los mismos durante el año 2019 unifiqué las cuatro tablas trimestrales (la misma tabla será utilizada en todas las búsquedas) y filtré la información por tipo de usuario. Esta consulta contabiliza la cantidad de recorridos realizados y suma el tiempo de cada recorrido.
+
+```sql
+WITH viajes_2019_anual AS (
+SELECT * FROM viajes_2019_ene_mar
+UNION ALL
+SELECT * FROM viajes_2019_abr_jun
+UNION ALL
+SELECT * FROM viajes_2019_jul_sep
+UNION ALL
+SELECT * FROM viajes_2019_oct_dic
 )
 
 SELECT
-    top_paying_job.*,
-    skills
-FROM
-    top_paying_job
-INNER JOIN skills_job_dim ON top_paying_job.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-ORDER BY  
-    salary_year_avg DESC;
-Aquí tienes el desglose de las habilidades más demandadas para los 10 mejores trabajos de analista de datos en 2023:
+    usertype,
+    COUNT(*) As viajes_totales,
+    SUM(ride_length) AS tiempo_total_recorridos
+FROM 
+    viajes_2019_anual
+GROUP BY
+    usertype;
+```
 
-Excel y SQL lideran con un recuento destacado de 7.
-Contínuan los programas de visualización como Tableau y PowerB BI con un recuento destacado de 4 y 2.
-Python también es solicitado, con un recuento destacado de 3.
-Otras habilidades a considerar son R, Visual Basic, Sharepoint, Sheets, Vba, Word, Julia, Phoenix, Powerpoint y Jira sin embargo, su demanda es corta.
-Top Habilidades Pagadas
+Aquí tienes el desglose de la cantidad de recorridos y el tiempo total que realizaron los usuarios en 2019:
 
-Gráfico de barras que visualiza el recuento de habilidades para los 10 mejores trabajos pagados para analistas de datos; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.
+***Total de recorridos***
+- **Los Subscribers** tienen una cantidad significativamente mayor de viajes con un total de 2,465,955 viajes durante 2019.
+- **Los Customers** realizaron 700,318 viajes en el mismo período analizado.
+- Esta diferencia sugiere que los **Subscribers** son usuarios más frecuentes del servicio de bicicletas en comparación con los **Customers**.
 
-3. Habilidades Más Demandadas para Analistas de Datos
-Esta consulta ayudó a identificar las habilidades más solicitadas con mayor frecuencia en las publicaciones de trabajo, dirigiendo el enfoque hacia áreas con alta demanda en análisis de datos.
+***Total del Tiempo Recorrido***
+- **Los Subscribers** acumularon 532,008 horas de tiempo recorrido.
+- **Los Customers** acumularon un total de 473,709 horas de tiempo recorrido
+- A pesar de realizar menos viajes en total, los **Customers** pasan más tiempo en promedio utilizando el servicio de bicicletas en comparación con los **Subscribers**.
 
-SELECT
-    skills,
-    count(job_postings_fact.job_id) AS demand_skills
-FROM
-    job_postings_fact
-INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-WHERE job_title_short = 'Data Analyst' AND
-job_work_from_home = TRUE
-GROUP BY skills
-ORDER BY demand_skills DESC
-LIMIT 5;
-Aquí tienes el desglose de las habilidades más demandadas para analistas de datos en 2023:
+![Total recorridos y tiempo total](codigo_graficos\total_recorridos.png)
 
-SQL y Excel siguen siendo fundamentales, enfatizando la necesidad de un conocimiento sólido en procesamiento de datos y manipulación de hojas de cálculo.
-La programación y las herramientas de visualización como Python, Tableau y Power BI son esenciales, lo que apunta hacia la creciente importancia de habilidades técnicas en la narración de datos y el soporte para la toma de decisiones.
-HABILIDADES	Conteo de demanda
-SQL	7291
-EXCEL	4611
-PYTHON	4330
-TABLEAU	3745
-POWER BI	2609
-Tabla de la demanda de las 5 habilidades principales en las publicaciones de trabajo para analistas de datos.
+*Gráfico de barras que visualiza los recorridos totales y el tiempo total de los recorridos que realizaron los dos tipos usuarios; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
-4. Habilidades Basadas en el Salario
-Explorar los salarios promedio asociados con diferentes habilidades reveló cuáles son las habilidades mejor remuneradas.
+## 2. El género de los usuarios Customer y Subscriber
+
+Para conocer el género de cada tipo de usuario utilicé la tabla de viajes anuales, sumé los recorridos realizados dependiendo si el usuario es Customer y Subscriber y al final filtrar la consulta por el género, para analizar el género de cada usuario que utilizó el servicio.
+
+```sql
+WITH viajes_2019_anual AS (
+SELECT * FROM viajes_2019_ene_mar
+UNION ALL
+SELECT * FROM viajes_2019_abr_jun
+UNION ALL
+SELECT * FROM viajes_2019_jul_sep
+UNION ALL
+SELECT * FROM viajes_2019_oct_dic
+)
 
 SELECT
-    skills,
-    ROUND(AVG(salary_year_avg), 0) AS avg_salary
+    gender,
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS viajes_customer,
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS viajes_subscriber
 FROM
-    job_postings_fact
-INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-WHERE job_title_short = 'Data Analyst' AND
-    salary_year_avg IS NOT NULL AND
-    job_work_from_home = TRUE
-GROUP BY skills
-ORDER BY avg_salary DESC
-LIMIT 25;
-Aquí tienes un desglose de los resultados para las habilidades mejor pagadas para los Analistas de Datos:
+    viajes_2019_anual
+WHERE
+    gender IS NOT NULL
+GROUP BY
+    gender;
+```
 
-Alta Demanda de Habilidades en Big Data y ML: Los salarios más altos son comandados por analistas con habilidades en tecnologías de big data (PySpark, Couchbase), herramientas de aprendizaje automático (DataRobot, Jupyter) y bibliotecas de Python (Pandas, NumPy); lo que refleja la alta valoración de la industria por las capacidades de procesamiento de datos y modelado predictivo.
-Proficiencia en Desarrollo y Despliegue de Software: El conocimiento en herramientas de desarrollo y despliegue (GitLab, Kubernetes, Airflow) indica una lucrativa intersección entre el análisis de datos y la ingeniería, con un énfasis en habilidades que facilitan la automatización y una gestión eficiente de las canalizaciones de datos.
-Expertise en Computación en la Nube: La familiaridad con herramientas de computación en la nube e ingeniería de datos (Elasticsearch, Databricks, GCP) subraya la creciente importancia de los entornos de análisis basados en la nube, lo que sugiere que la competencia en la nube aumenta significativamente el potencial de ingresos en el análisis de datos.
-HABILIDADES	SALARIO PROMEDIO
-PYSPARK	208172
-BITBUCKET	189155
-COUCHBASE	160515
-WATSON	160515
-DATAROBOT	155486
-GITLAB	154500
-SWIFT	153750
-JUPYTER	152777
-PANDAS	151821
-ELASTICSEARCH	145000
-Tabla del salario promedio para las 10 habilidades mejor remuneradas para analistas de datos
+Aquí tienes el desglose del género de los usuarios que utilizaron el servicio de Cyclistics en 2019:
 
-5. Habilidades Más Óptimas para Aprender
-Combinando ideas de datos de demanda y salario, esta consulta tuvo como objetivo identificar habilidades que tienen alta demanda y salarios altos, ofreciendo un enfoque estratégico para el desarrollo de habilidades.
+- Tanto para **Customers** como para **Subscribers**, los **hombres** realizan una cantidad significativamente 
+mayor de viajes en comparación con las **mujeres**.
+- Los **hombres** tienen un total de 1,847,245 viajes (75.3%) como **Subscribers**, mientras que las **mujeres** tienen solo 599,795 viajes (24.5%).
+- Del mismo modo, los **hombres** tienen 164,712 viajes (61.6%) como **Customers**, mientras que las **mujeres** tienen 103,695 viajes (38.6%).
+- Esta diferencia puede estar influenciada por diversos factores, como las preferencias de transporte, 
+la ubicación geográfica, la seguridad percibida y las actividades recreativas.
+
+![El género de los usuarios](codigo_graficos\clientes_genero.png)
+
+*Gráfico de barras que visualiza el porcentaje de usuarios que utilizaron el servicio según su género; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
+
+## 3. La edad de los usuarios Customer y Subscriber
+
+La siguiente consulta retoma el código anterior y organiza los resultados con base en la fecha de nacimiento de cada usuario que utilizó el servicio. Después resta el año de nacimiento con la fecha de registo para obtener la edad y 
+filtra la fecha de nacimiento a partir de año 1938.
+
+```sql
+WITH viajes_2019_anual AS (
+SELECT * FROM viajes_2019_ene_mar
+UNION ALL
+SELECT * FROM viajes_2019_abr_jun
+UNION ALL
+SELECT * FROM viajes_2019_jul_sep
+UNION ALL
+SELECT * FROM viajes_2019_oct_dic
+)
 
 SELECT
-    skills_dim.skill_id,
-    skills_dim.skills,
-    count(job_postings_fact.job_id) AS demand_skills,
-    ROUND(AVG(salary_year_avg), 0) AS avg_salary
+    2019-birthyear AS edad_del_usuario,
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS viajes_customer,
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS viajes_subscriber
 FROM
-    job_postings_fact
-INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-WHERE job_title_short = 'Data Analyst' AND
-    salary_year_avg IS NOT NULL AND
-    job_work_from_home = TRUE
-GROUP BY skills_dim.skill_id
-HAVING count(job_postings_fact.job_id) > 10
-ORDER BY avg_salary DESC
-SKILL_ID	HABILIDADES	HABILIDADES DEMANDADAS	SALARIO PROMEDIO
-8	GO	27	115320
-234	CONFLUENCE	11	114210
-97	HADOOP	22	113193
-80	SNOWFLAKE	37	112948
-74	AZURE	34	111225
-77	BIGQUERY	13	109654
-76	AWS	32	108317
-4	JAVA	17	106906
-194	SSIS	12	106683
-233	JIRA	20	104918
-Tabla de las habilidades más óptimas para analistas de datos ordenadas por salario.
+    viajes_2019_anual
+WHERE
+    birthyear IS NOT NULL AND
+    birthyear > 1938
+GROUP BY
+    birthyear;
+```
+Aquí tienes el desglose de la edad de los usuarios que utilizaron el servicio de Cyclistics en 2019:
 
-Aquí tienes un desglose de las habilidades más óptimas para Analistas de Datos en 2023:
+- Se observa un patrón en el que la cantidad de viajes disminuye a medida que aumenta la edad, tanto para **Customers** como para **Subscribers**.
+- Los usuarios más **jóvenes**, entre 16 y 30 años, tienden a realizar una mayor cantidad de viajes en comparación con los usuarios de **mayor edad**.
+- Los datos sugieren que el servicio de bicicletas puede ser más atractivo para los usuarios más **jóvenes**, quienes tienden a ser más activos en términos de viajes y podría atribuirse a la población activa y en edad laboral que utiliza el servicio como medio de transporte alternativo.
 
-Lenguajes de Programación de Alta Demanda: Python y R destacan por su alta demanda, con recuentos de demanda de 236 y 148 respectivamente. A pesar de su alta demanda, sus salarios promedio rondan los $101,397 para Python y $100,499 para R, lo que indica que la competencia en estos idiomas es muy valorada pero también ampliamente disponible.
-Herramientas y Tecnologías en la Nube: Habilidades en tecnologías especializadas como Snowflake, Azure, AWS y BigQuery muestran una demanda significativa con salarios promedio relativamente altos, apuntando hacia la creciente importancia de las plataformas en la nube y las tecnologías de big data en el análisis de datos.
-Herramientas de Inteligencia de Negocios y Visualización: Tableau y Looker, con recuentos de demanda de 230 y 49 respectivamente, y salarios promedio alrededor de $99,288 y $103,795, resaltan el papel crítico de la visualización de datos y la inteligencia de negocios en la obtención de ideas accionables a partir de los datos.
-Tecnologías de Base de Datos: La demanda de habilidades en bases de datos tradicionales y NoSQL (Oracle, SQL Server, NoSQL) con salarios promedio que van desde $97,786 hasta $104,534, refleja la necesidad duradera de experiencia en almacenamiento, recuperación y gestión de datos.
-Lo que apredí
+![Edad de usuarios](codigo_graficos\clientes_edad.png)
+
+*Gráfico de barras que visualiza la edad de los usuarios que utilizaron el servicio según su edad; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
+
+## 4. El promedio de tiempo y los recorridos que realizaron los dos tipos de usuarios por semana
+
+La consulta contabilizó los recorridos si fueron realizados por Customer o Subscriber, del mismo modo promedió el tiempo si el usuario fue alguno de los dos tipos. Después filtó la información con los días para observar la tendencia de viajes en una semana.
+
+```sql
+WITH viajes_2019_anual AS (
+SELECT * FROM viajes_2019_ene_mar
+UNION ALL
+SELECT * FROM viajes_2019_abr_jun
+UNION ALL
+SELECT * FROM viajes_2019_jul_sep
+UNION ALL
+SELECT * FROM viajes_2019_oct_dic
+)
+
+SELECT
+    weekday,
+    AVG( CASE WHEN usertype = 'Customer' THEN ride_length ELSE NULL END) AS promedio_recorrido_customer,
+    AVG( CASE WHEN usertype = 'Subscriber' THEN ride_length ELSE NULL END) AS promedio_recorrido_subscriber,
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS total_viajes_customer,
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_subscriber
+FROM 
+    viajes_2019_anual
+GROUP BY
+    weekday;
+
+```
+
+Aquí tienes el desglose de los viajes y el promedio de tiempo que realizó cada usuario cada día de la semana:
+
+- Los **Subscribers** tienden a tener una mayor cantidad de recorrido pero su promedio de tiempo es más corto en comparación con los **Customers** en todos los días de la semana.
+- El día con la mayor diferencia en el tiempo promedio de recorrido y la cantidad de viajes entre **Subscribers** y **Customers** son los **fines de semana** (Día 7 y 1), 
+- Los **Subscribers** realizan más recorridos en bicicleta en en los días laborables (Días 2-6).
+
+![Viajes por semana](codigo_graficos\Total_viajes_semana.png)
+
+*Gráfico lineal que representa los viajes que realizaron los dos tipos de usuario por día de la semana; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
+
+
+![Promedio de tiempo por semana](codigo_graficos\promedio_viajes_semana.png)
+
+*Gráfico lineal que muestra el promedio de tiempo en los recorridos de los dos tipos de usuarios por día de la semana; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
+
+## 5. Recorridos que realizaron los dos tipos de usuarios por semana
+
+En esta consulta solo se contabilizaron los recorridos si fueron realizados por Customer o Subscriber y el conteo se filtró por mes del año.
+
+```sql
+WITH viajes_2019_anual AS (
+SELECT * FROM viajes_2019_ene_mar
+UNION ALL
+SELECT * FROM viajes_2019_abr_jun
+UNION ALL
+SELECT * FROM viajes_2019_jul_sep
+UNION ALL
+SELECT * FROM viajes_2019_oct_dic
+)
+
+SELECT
+    Month,
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS total_viajes_customer,
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_subscriber
+FROM 
+    viajes_2019_anual
+GROUP BY
+    Month;
+```
+
+Aquí tienes el desglose de los viajes que realizó cada usuario en cada mes durante 2019:
+
+- Los **Subscribers** muestran consistentemente un total de recorridos más alto que los **Customers** en todos los meses del año.
+- En los meses con mayor actividad, como **junio, julio y agosto**, la brecha entre **Subscribers** y **Customers** es más notable, con una diferencia significativa en el total de recorridos.
+- Los **Subscribers** tienden a utilizar el servicio de bicicletas de manera más frecuente y constante a lo largo del año.
+- Los **Customers** muestran fluctuaciones en su uso del servicio a lo largo del año, con picos de actividad en los meses de mayor clima cálido, como **mayo, junio, julio y agosto**.
+- La actividad de los **Customers** parece estar más influenciada por las estaciones y el clima, con un aumento en los meses más cálidos y una disminución en los meses más fríos.
+
+![Viajes por mes](codigo_graficos\viajes_mes.png)
+
+*Gráfico lineal que representa los viajes que realizaron los dos tipos de usuario por mes del año; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
+
+## 6. Estaciones que los usuarios Customer y Subscriber prefieren comenzar su recorrido
+
+Explorar las estaciones donde los usuarios Customer y Subcriber partieron relevó los lugares donde los usuarios tiene una mayor preferencia de uso.
+
+```sql
+WITH viajes_2019_anual AS (
+SELECT * FROM viajes_2019_ene_mar
+UNION ALL
+SELECT * FROM viajes_2019_abr_jun
+UNION ALL
+SELECT * FROM viajes_2019_jul_sep
+UNION ALL
+SELECT * FROM viajes_2019_oct_dic
+)
+
+SELECT
+    from_station_name,
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS total_viajes_customer,
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_subscriber
+FROM 
+    viajes_2019_anual
+GROUP BY
+    from_station_name
+ORDER BY
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) DESC
+LIMIT 15;
+```
+|Estación de partida|Viajes realizados por Customer|Viajes realizados por Subscriber|
+|-|-|-|
+|Streeter Dr & Grand Ave|41982|12095|
+|Lake Shore Dr & Monroe St|31986|8718|
+|Millennium Park|17068|10159|
+|Michigan Ave & Oak St|17006|11508|
+|Shedd Aquarium|16573|4799|
+|Lake Shore Dr & North Blvd|15367|12561|
+|Theater on the Lake|12022|13926|
+|Michigan Ave & Washington St|10444|21373|
+|Dusable Harbor|10178|3850|
+|Adler Planetarium|9681|4009|
+
+*Tabla con las 10 estaciones más utilizadas por los usuarios Customer*
+
+Aquí tienes un desglose de los resultados para las estaciones que tiene mayor preferencia de partida de los usuarios Customer en 2019:
+
+- Se observa que hay diferencias significativas en la cantidad de viajes realizados por Customers y Subscribers desde diferentes estaciones de partida.
+- Algunas estaciones, como **"Streeter Dr & Grand Ave" y "Lake Shore Dr & Monroe St"**, muestran una mayor cantidad de viajes realizados por **Customers**.
+- Las estaciones como **"Columbus Dr & Randolph St" y "Michigan Ave & Washington St"** registran una cantidad significativamente mayor de viajes realizados por **Subscribers**.
+
+## 7. Estaciones que los usuarios Customer prefieren concluir su recorrido
+
+Explorar las estaciones donde los usuarios Customer y Subcriber concluyeron su recorrido relevó los lugares donde los usuarios tiene una mayor preferencia de uso.
+
+```sql
+WITH viajes_2019_anual AS (
+SELECT * FROM viajes_2019_ene_mar
+UNION ALL
+SELECT * FROM viajes_2019_abr_jun
+UNION ALL
+SELECT * FROM viajes_2019_jul_sep
+UNION ALL
+SELECT * FROM viajes_2019_oct_dic
+)
+
+SELECT
+    to_station_name,
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) AS total_viajes_customer,
+    SUM(CASE WHEN usertype = 'Subscriber' THEN 1 ELSE 0 END) AS total_viajes_subscriber
+FROM 
+    viajes_2019_anual
+GROUP BY
+    to_station_name
+ORDER BY
+    SUM(CASE WHEN usertype = 'Customer' THEN 1 ELSE 0 END) DESC
+LIMIT 15;
+```
+|Estación de llegada|Viajes realizados por Customer|Viajes realizados por Subscriber|
+|-|-|-|
+|Streeter Dr & Grand Ave|53797|11499|
+|Lake Shore Dr & Monroe St|25218|8267|
+|Millennium Park|19972|10125|
+|Michigan Ave & Oak St|18830|11629|
+|Lake Shore Dr & North Blvd|18809|15261|
+|Theater on the Lake|15238|14127|
+|Shedd Aquarium|13280|4738|
+|Michigan Ave & Washington St|10468|23931|
+|Adler Planetarium|8652|4002|
+|Dusable Harbor|7782|3956|
+
+*Tabla con las 10 estaciones más utilizadas por los usuarios Customer*
+
+Aquí tienes un desglose de los resultados para las estaciones que tiene mayor preferencia de llegada de los usuarios Customer en 2019:
+
+- Se observa que hay diferencias significativas en la cantidad de viajes realizados por **Customers y Subscribers** hacia diferentes estaciones de llegada.
+- Algunas estaciones, como **"Streeter Dr & Grand Ave" y "Lake Shore Dr & Monroe St"**, registran una mayor cantidad de viajes realizados por **Customers**.
+- Por otro lado, estaciones como **"Michigan Ave & Washington St" y "Lake Shore Dr & North Blvd"** muestran una cantidad 
+significativamente mayor de viajes realizados por **Subscribers**.
+- Algunas estaciones pueden ser más populares entre los **Subscribers** debido a su ubicación estratégica o a la disponibilidad de rutas preferidas.
+- Las estaciones destino que prefieren los usuarios **Customer** están ubicadon en lugares turísticos o de recreación.
+
+# Lo que apredí
 A lo largo de esta investigación potencié mi kit de herramientas de SQL con un poderoso arsenal:
 
 🧩 Creación de Consultas Complejas: Dominé el arte de SQL avanzado, fusionando tablas y utilizando cláusulas WITH para maniobras de tabla temporal a nivel de ninja.
 📊 Agregación de Datos: Me familiaricé con GROUP BY y convertí funciones de agregación como COUNT() y AVG() en mis aliados para resumir datos.
 💡 Magia Analítica: Mejoré mis habilidades de resolución de problemas del mundo real, convirtiendo preguntas en consultas SQL accionables y perspicaces.
-Conclusión
-Insights
+
+# Conclusión
+## Insights
+
 Del análisis, surgieron varios Insights:
 
 Trabajos de Analista de Datos Mejor Remunerados: ¡Los trabajos mejor pagados para analistas de datos que permiten trabajar de forma remota ofrecen una amplia gama de salarios, ¡el más alto es de $650,000!. Incluso como principiante una persona puede obtener un puesto de trabajo como analista de datos junio y un salario de $80,000 USD al año.
@@ -205,5 +360,6 @@ Habilidades para Trabajos Mejor Remunerados: Los trabajos de analista de datos m
 Habilidades Más Demandadas: SQL también es la habilidad más demandada en el mercado laboral de analistas de datos, por lo que es esencial para los buscadores de empleo.
 Habilidades con Salarios Más Altos: Habilidades especializadas, como SVN y Solidity, están asociadas con los salarios promedio más altos, lo que indica un valor adicional en la experiencia especializada.
 Habilidades Óptimas para el Valor en el Mercado Laboral: SQL lidera en demanda y ofertas de un alto salario promedio, posicionándolo como una de las habilidades más óptimas para que los analistas de datos aprendan y maximicen su valor en el mercado.
-Reflexiones Finales
+
+# Reflexiones Finales
 Este proyecto fue desarrollado para mejorar mis habilidades de SQL y proporcionar ideas valiosas sobre el mercado laboral de analistas de datos. Los hallazgos del análisis sirven como guía para priorizar el desarrollo de habilidades y los esfuerzos de búsqueda de empleo. Los aspirantes a analistas de datos ahora conocen las principales habilidades que deben desarrollar como SQL y Excel y de visualización como Tableau y Power BI para posicionarse mejor en un mercado laboral competitivo. Esta exploración destaca la importancia del aprendizaje continuo y la adaptación a las tendencias emergentes en el campo del análisis de datos para obtener mejores oportunidades laborales y un mejor salario.

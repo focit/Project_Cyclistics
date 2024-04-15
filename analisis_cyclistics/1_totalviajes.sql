@@ -1,5 +1,5 @@
 /*
-Pregunta: ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en la cantidad de viajes y el total del tiempo recorrido?".
+Pregunta: ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en la cantidad de viajes y el total del tiempo recorrido?.
 - Unifica las cuatro tablas trimestrales en una tabla anual.
 - Contabiliza el total de recorridos que realizaron los usuarios.
 - Suma el tiempo de los recorridos que realizaron los usuarios.
@@ -20,7 +20,7 @@ SELECT * FROM viajes_2019_oct_dic
 SELECT
     usertype,
     COUNT(*) As viajes_totales,
-    SUM(ride_length) AS recorridos_totales
+    SUM(ride_length) AS tiempo_total_recorridos
 FROM 
     viajes_2019_anual
 GROUP BY
@@ -52,7 +52,7 @@ como actividades recreativas o turísticas.
   {
     "usertype": "Customer",
     "viajes_totales": "700318",
-    "recorridos_totales": {
+    "tiempo_total_recorridos": {
       "hours": 473709,
       "minutes": 23,
       "seconds": 18
@@ -61,7 +61,7 @@ como actividades recreativas o turísticas.
   {
     "usertype": "Subscriber",
     "viajes_totales": "2465955",
-    "recorridos_totales": {
+    "tiempo_total_recorridos": {
       "hours": 532008,
       "minutes": 4,
       "seconds": 4
