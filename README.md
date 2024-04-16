@@ -81,7 +81,7 @@ Aquí tienes el desglose de la cantidad de recorridos y el tiempo total que real
 - **Los Customers** acumularon un total de 473,709 horas de tiempo recorrido
 - A pesar de realizar menos viajes en total, los **Customers** pasan más tiempo en promedio utilizando el servicio de bicicletas en comparación con los **Subscribers**.
 
-![Total recorridos y tiempo total](codigo_graficos\total_recorridos.png)
+![Total recorridos y tiempo total](codigo_graficos/total_recorridos.png)
 
 *Gráfico de barras que visualiza los recorridos totales y el tiempo total de los recorridos que realizaron los dos tipos usuarios; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
@@ -121,7 +121,7 @@ mayor de viajes en comparación con las **mujeres**.
 - Esta diferencia puede estar influenciada por diversos factores, como las preferencias de transporte, 
 la ubicación geográfica, la seguridad percibida y las actividades recreativas.
 
-![El género de los usuarios](codigo_graficos\clientes_genero.png)
+![El género de los usuarios](codigo_graficos/clientes_genero.png)
 
 *Gráfico de barras que visualiza el porcentaje de usuarios que utilizaron el servicio según su género; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
@@ -159,7 +159,7 @@ Aquí tienes el desglose de la edad de los usuarios que utilizaron el servicio d
 - Los usuarios más **jóvenes**, entre 16 y 30 años, tienden a realizar una mayor cantidad de viajes en comparación con los usuarios de **mayor edad**.
 - Los datos sugieren que el servicio de bicicletas puede ser más atractivo para los usuarios más **jóvenes**, quienes tienden a ser más activos en términos de viajes y podría atribuirse a la población activa y en edad laboral que utiliza el servicio como medio de transporte alternativo.
 
-![Edad de usuarios](codigo_graficos\clientes_edad.png)
+![Edad de usuarios](codigo_graficos/clientes_edad.png)
 
 *Gráfico de barras que visualiza la edad de los usuarios que utilizaron el servicio según su edad; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
@@ -197,16 +197,16 @@ Aquí tienes el desglose de los viajes y el promedio de tiempo que realizó cada
 - El día con la mayor diferencia en el tiempo promedio de recorrido y la cantidad de viajes entre **Subscribers** y **Customers** son los **fines de semana** (Día 7 y 1), 
 - Los **Subscribers** realizan más recorridos en bicicleta en en los días laborables (Días 2-6).
 
-![Viajes por semana](codigo_graficos\Total_viajes_semana.png)
+![Viajes por semana](codigo_graficos/Total_viajes_semana.png)
 
 *Gráfico lineal que representa los viajes que realizaron los dos tipos de usuario por día de la semana; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
 
-![Promedio de tiempo por semana](codigo_graficos\promedio_viajes_semana.png)
+![Promedio de tiempo por semana](codigo_graficos/promedio_viajes_semana.png)
 
 *Gráfico lineal que muestra el promedio de tiempo en los recorridos de los dos tipos de usuarios por día de la semana; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
-## 5. Recorridos que realizaron los dos tipos de usuarios por semana
+## 5. Recorridos que realizaron los dos tipos de usuarios por mes
 
 En esta consulta solo se contabilizaron los recorridos si fueron realizados por Customer o Subscriber y el conteo se filtró por mes del año.
 
@@ -239,7 +239,7 @@ Aquí tienes el desglose de los viajes que realizó cada usuario en cada mes dur
 - Los **Customers** muestran fluctuaciones en su uso del servicio a lo largo del año, con picos de actividad en los meses de mayor clima cálido, como **mayo, junio, julio y agosto**.
 - La actividad de los **Customers** parece estar más influenciada por las estaciones y el clima, con un aumento en los meses más cálidos y una disminución en los meses más fríos.
 
-![Viajes por mes](codigo_graficos\viajes_mes.png)
+![Viajes por mes](codigo_graficos/viajes_mes.png)
 
 *Gráfico lineal que representa los viajes que realizaron los dos tipos de usuario por mes del año; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
