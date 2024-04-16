@@ -1,6 +1,6 @@
 # Introducción
 
-!Bienvenidos a un viaje fascinante a través de los datos de Cyclistics, donde las bicicletas no son medios de transporte sino de aventura¡ Descubriremos cuáles son las diferencias entre los clientes Customer y Subscriber, quieres prefieren utilizar los servicios de la empresa Cyclisticas para movilizarse a cualquier punto de la ciudad.
+!Bienvenidos a un viaje fascinante a través de los datos de Cyclistics, donde las bicicletas no son medios de transporte sino de aventura¡ Descubriremos cuáles son las diferencias entre los usuarios Customer y Subscriber, quienes utilizan los servicios de la empresa Cyclistics para movilizarse a cualquier punto de la ciudad.
 
 ¿Consultas SQL? Encuéntralas aquí: [Análisis_cyclistics](analisis_cyclistics)
 
@@ -12,21 +12,20 @@ Este proyecto se origina de un caso práctico del **Certificado profesional de A
 Cabe aclarar que Cyclistics es una empresa ficticia que se creó para este estudio de caso, así que los datos que recopilé provienen de [Motivate International Inc](https://divvy-tripdata.s3.amazonaws.com/index.html), quienes otorgaron la licencia para utilizar su base de datos.
 
 Las preguntas que quería responder a través de mis consultas SQL fueron:
-- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en la cantidad de viajes y el total del tiempo recorrido?
-
-- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en cuanto al género?
-- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en cuanto a la edad de los usuarios?
-- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en el total de viajes realizados por día de la semana?
-- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en el total de viajes realizados por mes durante el 2019?
-- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas de acuerdo a la estación que parten su recorrido?
-- ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas de acuerdo a la estación que concluyen su recorrido?
+- ¿Cuál es la diferencia entre los usuarios Subscriber y Customer en la cantidad de viajes y el total del tiempo recorrido?
+- ¿Cuál es el género de los usuarios Subscriber y Customer?
+- ¿Cuál es la edad de los usuarios Subsciber y Customer?
+- ¿Cuál es la diferencia entre los usuarios Subscriber y Customer en el total de viajes realizados por día de la semana?
+- ¿Cuál es la diferencia entre los usuarios Subscriber y Customer en el total de viajes realizados por mes durante el 2019?
+- ¿Cuál es la diferencia entre los usuarios Subscriber y Customer de acuerdo a la estación que parten su recorrido?
+- ¿Cuál es la diferencia entre los usuarios Subscriber y Customer de acuerdo a la estación que concluyen su recorrido?
 
 ## Sobre la empresa
 En 2016, Cyclistic lanzó una exitosa oferta de bicicletas compartidas. Desde entonces, el programa ha crecido hasta alcanzar una flota de 5.824 bicicletas que están geolocalizadas y bloqueadas en una red de 692 estaciones en todo Chicago. Las bicicletas se pueden desbloquear desde una estación y devolverse a cualquier otra estación del sistema en cualquier momento.
 
 Hasta ahora, la estrategia de marketing de Cyclistic se basaba en generar conciencia general y atraer a amplios segmentos de consumidores. El enfoque que ayudó a hacer esto posible fue la flexibilidad de sus planes de precios: pases de viaje único, pases de día completo y membresías anuales. Los clientes que compran pases de un solo viaje o de un día completo se denominan Customer. Los clientes que compran membresías anuales son Subscriber de Cyclistic.
 
-Los analistas financieros de Cyclistic han llegado a la conclusión de que los miembros anuales son mucho más rentables que los ciclistas ocasionales. Aunque la flexibilidad de precios ayuda a Cyclistic a atraer más clientes, Moreno (Director de Marketing) cree que maximizar el número de miembros anuales será clave para el crecimiento futuro. En lugar de crear una campaña de marketing dirigida a clientes completamente nuevos, Moreno cree que existe una muy buena posibilidad de convertir a los pasajeros ocasionales en miembros. Ella señala que los ciclistas ocasionales ya conocen el programa Cyclistic y han elegido Cyclistic para sus necesidades de movilidad.
+Los analistas financieros de Cyclistic han llegado a la conclusión de que los miembros anuales son mucho más rentables que los ciclistas ocasionales. Aunque la flexibilidad de precios ayuda a Cyclistic a atraer más clientes, Moreno (Directora de Marketing) cree que maximizar el número de miembros anuales será clave para el crecimiento futuro. En lugar de crear una campaña de marketing dirigida a clientes completamente nuevos, Moreno cree que existe una muy buena posibilidad de convertir a los pasajeros ocasionales en miembros. Ella señala que los ciclistas ocasionales ya conocen el programa Cyclistic y han elegido Cyclistic para sus necesidades de movilidad.
 
 Moreno se ha fijado un objetivo claro: diseñar estrategias de marketing destinadas a convertir a los pasajeros ocasionales en miembros anuales. Sin embargo, para lograrlo, el equipo de analistas de marketing necesita comprender mejor cómo difieren los miembros anuales y los usuarios ocasionales. Moreno y su equipo están interesados en analizar los datos históricos de viajes en bicicleta para identificar tendencias.
 
@@ -34,7 +33,7 @@ Moreno se ha fijado un objetivo claro: diseñar estrategias de marketing destina
 
 Para conocer las diferencias entre los usuarios Customer y Subscriber, aproveché el poder de varias herramientas clave:
 
-**Excel:**: Necesaria para la limpieza y la unficación de los datos de las cuatro tablas elegidas.
+**Excel:**: Necesaria para la limpieza y la unificación de los datos de las cuatro tablas que corresponden a año 2019.
 **SQL:** La columna vertebral de mi análisis, que me permitió consultar la base de datos y descubrir ideas críticas.
 **PostgreSQL:** El sistema de gestión de bases de datos elegido, ideal para manejar los datos de los viajes realizados.
 **Visual Studio Code:** Mi herramienta principal para la gestión de bases de datos y la ejecución de consultas SQL.
@@ -344,22 +343,23 @@ significativamente mayor de viajes realizados por **Subscribers**.
 - Las estaciones destino que prefieren los usuarios **Customer** están ubicadon en lugares turísticos o de recreación.
 
 # Lo que apredí
-A lo largo de esta investigación potencié mi kit de herramientas de SQL con un poderoso arsenal:
+A lo largo del proyecto reafimé mis habilidades aprendidas en el curso, los pasos que se deben realizar en el análisis de datos: como plantear las preguntas, limpiar los datos, analizar los datos y crear las visualizaciones pertinentes. En cuanto a las herramientas reforcé mis conocimentos en:
 
-🧩 Creación de Consultas Complejas: Dominé el arte de SQL avanzado, fusionando tablas y utilizando cláusulas WITH para maniobras de tabla temporal a nivel de ninja.
-📊 Agregación de Datos: Me familiaricé con GROUP BY y convertí funciones de agregación como COUNT() y AVG() en mis aliados para resumir datos.
+🧩 Creación de Consultas Complejas en SQL: Dominé el arte del SQL avanzado, utilizando cláusulas WITH para manejar tablas temporales, la expresión CASE para filtar las columnas dependiendo si el dato es sobre el usuario Customer o Subscriber y las funciones de agregación como COUNT(), AVG(), y SUM().
+📊 Limpieza de datos en Excel: Utilicé los filtros para eliminar datos nulos o erróneos, unifiqué el formato de los datos como la fecha y la hora, utilicé fórmulas como resta para obtener el tiempo de los recorridos y las funciones =MES y =DIASEM para obtener el día de la semana y el mes. 
 💡 Magia Analítica: Mejoré mis habilidades de resolución de problemas del mundo real, convirtiendo preguntas en consultas SQL accionables y perspicaces.
 
 # Conclusión
 ## Insights
 
 Del análisis, surgieron varios Insights:
-
-Trabajos de Analista de Datos Mejor Remunerados: ¡Los trabajos mejor pagados para analistas de datos que permiten trabajar de forma remota ofrecen una amplia gama de salarios, ¡el más alto es de $650,000!. Incluso como principiante una persona puede obtener un puesto de trabajo como analista de datos junio y un salario de $80,000 USD al año.
-Habilidades para Trabajos Mejor Remunerados: Los trabajos de analista de datos mejor remunerados requieren proficiencia avanzada en SQL, lo que sugiere que es una habilidad crítica para ganar un salario alto.
-Habilidades Más Demandadas: SQL también es la habilidad más demandada en el mercado laboral de analistas de datos, por lo que es esencial para los buscadores de empleo.
-Habilidades con Salarios Más Altos: Habilidades especializadas, como SVN y Solidity, están asociadas con los salarios promedio más altos, lo que indica un valor adicional en la experiencia especializada.
-Habilidades Óptimas para el Valor en el Mercado Laboral: SQL lidera en demanda y ofertas de un alto salario promedio, posicionándolo como una de las habilidades más óptimas para que los analistas de datos aprendan y maximicen su valor en el mercado.
+- Los usuarios Subscriber son lo que realizaron una mayor cantidad de viajes con el 78% de los recorridos mientras los usuarios Customer realizaron solo el 22%, también tienen un registro mayor de tiempo, sin embargo en promedio los Customer realizaron trayectos más largos. 
+- Los usuarios hombres realizaron más recorridos que las mujeres en los dos tipos de usuarios. De igual forma, en ambos usuarios los recorridos se concentraron en edades de los 20 a los 40 años. 
+- La principal diferencia entre los usuarios Customer y Subscriber es el uso que le da al servicio de Cyclistics. Los primeros suelen utilizarlas en día de descanso para recreación y paseo, es por ello que los recorridos son pocos y el tiempo mayor. Los usuarios Subscriber utilizan el servicio para recorridos cortos y en días laborales, lo que significa que se movilizan a su lugar de trabajo o para realizar mandados rápidos.
+- El clima afecta el uso del servicio, ya que los meses más cálidos son donde se concentraron la mayor cantidad de recorridos.
+- Muchas de las estaciones que prefirieron los usuarios Customer para iniciar o concluir su recorrido se encuentran en zonas turísticas, a diferencia de los usuarios Subscriber que se suelen ubicar en zonas laborales.
+- Como conclusión, una razón para convertir usuarios Customer a Subscriber es promover el servicio como medio de transporte diario y no solo de esparcimiento,  mostrando las ventajas económicas que significa tener una membresia anual.
+- En cuanto la estrategia de Marketing funcionaria realizar eventos como paseo o recorridos casuales para presentar las ventajas que significaria obtener la mebresia anual y también colocar anuncios publicitarios en las zonas que los usuarios Customer utilizan más.
 
 # Reflexiones Finales
-Este proyecto fue desarrollado para mejorar mis habilidades de SQL y proporcionar ideas valiosas sobre el mercado laboral de analistas de datos. Los hallazgos del análisis sirven como guía para priorizar el desarrollo de habilidades y los esfuerzos de búsqueda de empleo. Los aspirantes a analistas de datos ahora conocen las principales habilidades que deben desarrollar como SQL y Excel y de visualización como Tableau y Power BI para posicionarse mejor en un mercado laboral competitivo. Esta exploración destaca la importancia del aprendizaje continuo y la adaptación a las tendencias emergentes en el campo del análisis de datos para obtener mejores oportunidades laborales y un mejor salario.
+Este proyecto lo desarrollé para mejorar mis habilidades en las herramientas de análisis de datos como Excel y SQL para proporcionar valiosas ideas sobre las diferencias entre los usuarios Customer y Subscriber. Los hallazgos servirán como guía a la empresa Cyclistics para conocer los patrones que hay entre sus usuarios y sus diferencias y así crear las campañas pertinentes para seguir creciendo y obtener una mayor cantidad de usuarios Subscriber.
