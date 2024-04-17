@@ -81,7 +81,7 @@ Aquí tienes el desglose de la cantidad de recorridos y el tiempo total que real
 - **Los Customers** acumularon un total de 473,709 horas de tiempo recorrido
 - A pesar de realizar menos viajes en total, los **Customers** pasan más tiempo en promedio utilizando el servicio de bicicletas en comparación con los **Subscribers**.
 
-![Total recorridos y tiempo total](codigo_graficos/total_recorridos.png)
+![Total recorridos y tiempo total](codigo_graficos/total_viajes.png)
 
 *Gráfico de barras que visualiza los recorridos totales y el tiempo total de los recorridos que realizaron los dos tipos usuarios; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
@@ -197,12 +197,12 @@ Aquí tienes el desglose de los viajes y el promedio de tiempo que realizó cada
 - El día con la mayor diferencia en el tiempo promedio de recorrido y la cantidad de viajes entre **Subscribers** y **Customers** son los **fines de semana** (Día 7 y 1), 
 - Los **Subscribers** realizan más recorridos en bicicleta en en los días laborables (Días 2-6).
 
-![Viajes por semana](codigo_graficos/Total_viajes_semana.png)
+![Viajes por semana](codigo_graficos/viajes_semana.png)
 
 *Gráfico lineal que representa los viajes que realizaron los dos tipos de usuario por día de la semana; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
 
-![Promedio de tiempo por semana](codigo_graficos/promedio_viajes_semana.png)
+![Promedio de tiempo por semana](codigo_graficos/tiempo_semana.png)
 
 *Gráfico lineal que muestra el promedio de tiempo en los recorridos de los dos tipos de usuarios por día de la semana; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
