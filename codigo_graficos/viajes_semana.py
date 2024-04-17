@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Datos en formato JSON
 data = [
@@ -29,37 +30,52 @@ viajes_subscriber = [entry["total_viajes_subscriber"] for entry in data]
 tiempo_customer = [entry["promedio_recorrido_customer"]["minutes"] + entry["promedio_recorrido_customer"]["seconds"] / 60 for entry in data]
 tiempo_subscriber = [entry["promedio_recorrido_subscriber"]["minutes"] + entry["promedio_recorrido_subscriber"]["seconds"] / 60 for entry in data]
 
-# Crear los gráficos lineales
+# Crear el gráfico lineal del total de recorridos
 plt.figure(figsize=(10, 5))
 
-plt.subplot(2, 1, 1)
-plt.plot(dias_semana, viajes_customer, marker='o', color='blue')
-plt.xlabel('Día de la semana')
-plt.ylabel('Total de viajes')
-plt.title('Total de viajes de usuarios Customer por día de la semana en 2019')
+plt.plot(dias_semana, viajes_customer, marker='o', color='blue', label='Customer')
+plt.plot(dias_semana, viajes_subscriber, marker='o', color='orange', label='Subscriber')
 
-plt.subplot(2, 1, 2)
-plt.plot(dias_semana, viajes_subscriber, marker='o', color='orange')
-plt.xlabel('Día de la semana')
-plt.ylabel('Total de viajes')
-plt.title('Total de viajes de usuarios Subscriber por día de la semana en 2019')
+# Etiquetas de datos
+for i, (semana, vc, vs) in enumerate(zip(dias_semana, viajes_customer, viajes_subscriber)):
+    plt.text(semana, vc, f"{vc}", ha='center', va='bottom')
+    plt.text(semana, vs, f"{vs}", ha='center', va='bottom')
 
+# Rejillas
+plt.grid(True)
+
+plt.xlabel('Mes')
+plt.ylabel('Total de viajes')
+plt.title('Usuarios Customer vs. Subscriber: Total de viajes por día de la semana en 2019')
+plt.legend()
+plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
+
+# Crear el gráfico lineal del promedio de tiempo
 plt.figure(figsize=(10, 5))
 
-plt.subplot(2, 1, 1)
-plt.plot(dias_semana, tiempo_customer, marker='o', color='blue')
-plt.xlabel('Día de la semana')
-plt.ylabel('Tiempo promedio (Minutos)')
-plt.title('Promedio en el tiempo de los recorridos de usuarios Customer por día de la semana en 2019')
+plt.plot(dias_semana, tiempo_customer, marker='o', color='blue', label='Customer')
+plt.plot(dias_semana, tiempo_subscriber, marker='o', color='orange', label='Subscriber')
 
-plt.subplot(2, 1, 2)
-plt.plot(dias_semana, tiempo_subscriber, marker='o', color='orange')
-plt.xlabel('Día de la semana')
-plt.ylabel('Tiempo promedio (Minutos)')
-plt.title('Promedio en el tiempo de los recorridos de usuarios Customer por día de la semana en 2019')
+# Etiquetas de datos
+for i, (semana, vc, vs) in enumerate(zip(dias_semana, tiempo_customer, tiempo_subscriber)):
+    vc_rounded = round(vc, 2)
+    vs_rounded = round(vs, 2)
+    plt.text(semana, vc, f"{vc_rounded}", ha='center', va='bottom')
+    plt.text(semana, vs, f"{vs_rounded}", ha='center', va='bottom')
+    
+    #plt.text(semana, vc, f"{vc}", ha='center', va='bottom')
+    #plt.text(semana, vs, f"{vs}", ha='center', va='bottom')
 
+# Rejillas
+plt.grid(True)
+
+plt.xlabel('Dia de la semana')
+plt.ylabel('Promedio de tiempo (minutos)')
+plt.title('Usuarios Customer vs. Subscriber: Promedio de recorrido por día de la semana en 2019')
+plt.legend()
+plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()

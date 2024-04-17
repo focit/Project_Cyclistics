@@ -18,22 +18,31 @@ data = [
 usertypes = [entry["usertype"] for entry in data]
 viajes_totales = [int(entry["viajes_totales"]) for entry in data]
 recorridos_totales = [entry["recorridos_totales"]["hours"] + entry["recorridos_totales"]["minutes"] / 60 + entry["recorridos_totales"]["seconds"] / 3600 for entry in data]
-
+    
 # Gráfico de barras para el total de viajes
 plt.figure(figsize=(10, 5))
 plt.subplot(1, 2, 1)
 plt.bar(usertypes, viajes_totales, color=['blue', 'orange'])
-plt.xlabel('User Type')
-plt.ylabel('Total Trips')
-plt.title('El total de recorridos realizados en 2019 según el tipo de cliente')
+
+# Etiquetas de datos
+for i, v in enumerate(viajes_totales):
+    plt.text(i, v, str(v), ha='center', va='bottom')
+
+plt.xlabel('Tipo de usuario')
+plt.ylabel('Total de viajes')
+plt.title('Usuarios Customer vs. Subscriber: Total de viajes realizados en 2019')
 
 # Gráfico de barras para el tiempo total de recorridos
 plt.subplot(1, 2, 2)
 plt.bar(usertypes, recorridos_totales, color=['blue', 'orange'])
-plt.xlabel('User Type')
-plt.ylabel('Total Time (hours)')
-plt.title('El tiempo total de los recorridos realizados en 2019 según el tipo de cliente')
 
-# Mostrar los gráficos
+# Etiquetas de datos
+for i, v in enumerate(recorridos_totales):
+    plt.text(i, v, f"{v:.2f}", ha='center', va='bottom')
+
+plt.xlabel('Tipo de usuario')
+plt.ylabel('Tiempo total de los recorridos (Horas)')
+plt.title('Usuarios Customer vs. Subscriber: Total del tiempo de los recorridos en 2019')
+
 plt.tight_layout()
 plt.show()

@@ -83,13 +83,13 @@ plt.subplot(1, 2, 1)
 plt.bar(edades, viajes_customer, color='blue')
 plt.xlabel('Edad del Usuario')
 plt.ylabel('Número de Viajes')
-plt.title('Clientes Customer que utilizaron Cyclistics según su edad en 2019')
+plt.title('Usuarios Customer vs. Subscriber: La edad de los usuarios Customer en 2019')
 
 plt.subplot(1, 2, 2)
 plt.bar(edades, viajes_subscriber, color='orange')
 plt.xlabel('Edad del Usuario')
 plt.ylabel('Número de Viajes')
-plt.title('Clientes Subscriber que utilizaron Cyclistics según su edad en 2019')
+plt.title('Usuarios Customer vs. Subscriber: La edad de los usuarios Subscriber en 2019')
 
 # Mostrar los gráficos
 plt.tight_layout()

@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Datos en formato JSON
 data = [
@@ -42,12 +43,30 @@ plt.figure(figsize=(10, 5))
 plt.plot(meses, viajes_customer, marker='o', color='blue', label='Customer')
 plt.plot(meses, viajes_subscriber, marker='o', color='orange', label='Subscriber')
 
+# Etiquetas de datos
+for i, (mes, vc, vs) in enumerate(zip(meses, viajes_customer, viajes_subscriber)):
+    plt.text(mes, vc, f"{vc}", ha='center', va='bottom')
+    plt.text(mes, vs, f"{vs}", ha='center', va='bottom')
+
+# Rejillas
+plt.grid(True)
+
+# Línea de tendencia
+z_customer = np.polyfit(range(len(meses)), viajes_customer, 1)
+p_customer = np.poly1d(z_customer)
+plt.plot(meses, p_customer(range(len(meses))), linestyle='--', color='blue')
+
+z_subscriber = np.polyfit(range(len(meses)), viajes_subscriber, 1)
+p_subscriber = np.poly1d(z_subscriber)
+plt.plot(meses, p_subscriber(range(len(meses))), linestyle='--', color='orange')
+
+# Resto de tu código...
+
 plt.xlabel('Mes')
 plt.ylabel('Total de viajes')
-plt.title('El total de viajes mensuales realizados por usuarios Customer y Subscriber en el 2019')
+plt.title('Usuarios Customer vs. Subscriber: Total de viajes mensuales en 2019')
 plt.legend()
-
-plt.xticks(rotation=45)  # Rotar las etiquetas del eje x para una mejor legibilidad
-
+plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
