@@ -148,7 +148,7 @@ ORDER BY 2 DESC
 LIMIT 10;
 ```
 
-|Estación de partida|Viajes Ocasionaes|
+|Estación de partida|Viajes Ocasionales|
 |-|-|
 |Streeter Dr & Grand Ave|41982|
 |Lake Shore Dr & Monroe St|31986|
@@ -177,7 +177,7 @@ LIMIT 10;
 ```
 
 |Estación de partida|Viajes miembros|
-|-|-|-|
+|-|-|
 |Canal St & Adams St|43032|
 |Clinton St & Washington Blvd|39036|
 |Clinton St & Madison St|38925|
@@ -257,9 +257,9 @@ LIMIT 10;
 |Canal St & Madison St-Michigan Ave & Washington St|2039|8.07 min|
 |Clinton St & Washington Blvd-Michigan Ave & Washington St|1957|8.22 min|
 |Columbus Dr & Randolph St-State St & Randolph St|1907|3.48 min|
-|Wacker Dr & Washington St-Michigan Ave & Washington St|1860|6.32|
-|Columbus Dr & Randolph St-Canal St & Adams St|1772|12.23|
-|MLK Jr Dr & 29th St-State St & 33rd St|1679|7.39|
+|Wacker Dr & Washington St-Michigan Ave & Washington St|1860|6.32 min|
+|Columbus Dr & Randolph St-Canal St & Adams St|1772|12.23 min|
+|MLK Jr Dr & 29th St-State St & 33rd St|1679|7.39 min|
 
 *Tabla con las 10 rutas que prefirieron los Miembros*
 
@@ -339,7 +339,7 @@ actividades al aire libre.
 - **Verano:** Es la estación con mayor uso, tanto en términos absolutos como relativos. El buen clima y las vacaciones 
 favorecen el uso de bicicletas para actividades recreativas y turismo.
 
-![Viajes por estación del año](codigo_graficos/viajes_por_estación_del_año.png)
+![Viajes por estación del año](codigo_graficos/Viajes_por_estación_del_año.png)
 
 *Gráfico de barras que representa los viajes que realizaron los dos tipos de usuario en cada estación del año; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
