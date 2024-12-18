@@ -1,71 +1,42 @@
 /*
-Pregunta: ¿En qué se diferencian los Subscriber y los Customer que usan el servicio de bicicletas en la cantidad de viajes y el total del tiempo recorrido?.
-- Unifica las cuatro tablas trimestrales en una tabla anual.
-- Contabiliza el total de recorridos que realizaron los usuarios.
-- Suma el tiempo de los recorridos que realizaron los usuarios.
-- Divide ambos resultados entre los dos tipos de usuarios: Customer y Subscriber.
-¿Por qué? Establecer la diferencia en el uso del servicio de Cyclistics entre los Customer y los Subscriber en los recorridos realizados en 2019.
+1. Comportamiento general
+Pregunta: ¿Cuántos viajes realizan los clientes ocasionales y los miembros?
+- Contabilizar el total de recorridos que realizaron los usuarios ocasionales y los miembros.
+- Ver el porcentaje de diferencia que hay en cada uno de los tipos de usuario del total de viajes.
+¿Por qué? Establecer la diferencia en el uso del servicio de Cyclistics entre los Ocasionales y Miembros en los recorridos realizados en 2019.
 */
 
-WITH viajes_2019_anual AS (
-SELECT * FROM viajes_2019_ene_mar
-UNION ALL
-SELECT * FROM viajes_2019_abr_jun
-UNION ALL
-SELECT * FROM viajes_2019_jul_sep
-UNION ALL
-SELECT * FROM viajes_2019_oct_dic
-)
-
 SELECT
-    usertype,
-    COUNT(*) As viajes_totales,
-    SUM(ride_length) AS tiempo_total_recorridos
-FROM 
-    viajes_2019_anual
-GROUP BY
-    usertype;
+    usertype AS Tipo_de_usuario,
+    Count(*) AS viajes_realizados,
+    (SELECT count(*) from viajes_2019) as total_de_viajes,
+    Count(*)*100/(SELECT count(*) from viajes_2019) as porcentaje_del_total
+FROM
+    viajes_2019
+GROUP BY 1;
 
 /*
 Insights:
-Total de recorridos realizados:
-- Los Subscribers tienen una cantidad significativamente mayor de viajes en comparación con los Customers. Con un total de 
-2,465,955 viajes durante 2019.
-- Mientras que los Customers realizaron 700,318 viajes en el mismo período analizado.
-- Esta diferencia sugiere que los Subscribers son usuarios más frecuentes del servicio de bicicletas en comparación con los Customers.
 
-Total del Tiempo Recorrido:
-- Aunque los Subscribers tienen más viajes totales, los Customers tienen un total de tiempo recorrido más largo.
-- Los Customers acumularon un total de 473,709 horas, 23 minutos y 18 segundos de tiempo recorrido, 
-mientras que los Subscribers acumularon 532,008 horas, 4 minutos y 4 segundos de tiempo recorrido.
-A pesar de realizar menos viajes en total, los Customers pasan más tiempo en promedio utilizando el servicio de bicicletas 
-en comparación con los Subscribers.
+-Los miembros de Cyclistics son los principales usuarios del servicio. Realizan casi el 77% del total de viajes. 
+Esto indica una alta tasa de adopción y un mayor compromiso con la marca por parte de los miembros.
 
-Conclusiones:
-- Los Subscribers tienden a utilizar el servicio de bicicletas para viajes más cortos y frecuentes, 
-como desplazamientos diarios al trabajo u otras actividades regulares.
-- Los Customers, por otro lado, pueden utilizar el servicio de bicicletas para viajes más largos y menos frecuentes, 
-como actividades recreativas o turísticas.
-
+-Los clientes ocasionales, a pesar de representar un porcentaje menor (22%), también contribuyen significativamente 
+al total de viajes. Esto sugiere que Cyclistics tiene una base de clientes ocasionales sólida que podría convertirse 
+en miembros potenciales.
 
 [
   {
-    "usertype": "Customer",
-    "viajes_totales": "700318",
-    "tiempo_total_recorridos": {
-      "hours": 473709,
-      "minutes": 23,
-      "seconds": 18
-    }
+    "tipo_de_usuario": "Miembro",
+    "viajes_realizados": "2465955",
+    "total_de_viajes": "3166273",
+    "porcentaje_del_total": "77"
   },
   {
-    "usertype": "Subscriber",
-    "viajes_totales": "2465955",
-    "tiempo_total_recorridos": {
-      "hours": 532008,
-      "minutes": 4,
-      "seconds": 4
-    }
+    "tipo_de_usuario": "Ocasional",
+    "viajes_realizados": "700318",
+    "total_de_viajes": "3166273",
+    "porcentaje_del_total": "22"
   }
 ]
 */
