@@ -1,9 +1,8 @@
 # Introducción
 
-!Bienvenidos a un viaje fascinante a través de los datos de Cyclistics, donde las bicicletas no son medios de transporte sino de aventura¡ Descubriremos cuáles son las diferencias entre los Clientes Ocasionales y los Miembros, quienes utilizan los servicios de la empresa Cyclistics para movilizarse a cualquier punto de la ciudad.
+¡Bienvenidos a un viaje fascinante a través de los datos de Cyclistics, donde las bicicletas no son medios de transporte sino de aventura! Descubriremos cuáles son las diferencias entre los Clientes Ocasionales y los Miembros, quienes utilizan los servicios de la empresa Cyclistics para movilizarse a cualquier punto de la ciudad.
 
 ¿Consultas SQL? Encuéntralas aquí: [Análisis_cyclistics](analisis_cyclistics)
-
 
 # Antecedentes
 
@@ -18,8 +17,8 @@ Las preguntas que quería responder a través de mis consultas SQL fueron:
 - ¿Cuáles son las estaciones de salida más populares para cada usuario?
 - ¿Existen patrones en los puntos de salida y llegada que difiere entre los clientes ocasionales y miembros?
 - ¿En qué días de la semana los clientes ocasionales utilizan más el servicio frente a los miembros?
-- ¿Como es el uso entre estaciones o temporada del año?
-- ¿Qué patron de acumulacion y diferencia de mes con mes existe en cada tipo de usuario en los viajes realizados en 2019?
+- ¿Cómo es el uso entre estaciones o temporada del año?
+- ¿Qué patrón de acumulación y diferencia de mes con mes existe en cada tipo de usuario en los viajes realizados en 2019?
 - ¿Cuál es la distribución de edad para cada cliente?
 
 ## Sobre la empresa
@@ -53,7 +52,7 @@ Cada consulta para este proyecto tuvo como objetivo conocer las diferencias que 
 
 ## 1. El total de recorridos que realizaron durante el año 2019
 
-Comenzamos a indentificar las diferencias entre los Clientes Ocasionales y los Miembros en la cantidad de viajes que realizaron durante el año. La base de datos venía en cuatro tablas, cada uno contenía la información trimestral de recorridos, así que decidí limpiarla y unificar todos los datos en una sola y utilizar esa tabla limpia durante todo el análisis. Cada fila es el registro de un recorrido que hizo un usuario, entonces, para conocer el total de viajes. Contabilicé las filas en la consulta y lo filtré por tipo de usuario. Después, dividí la cantidad de viajes por usuario por el total de viajes para obtener el porcentaje.
+Comenzamos a identificar las diferencias entre los Clientes Ocasionales y los Miembros en la cantidad de viajes que realizaron durante el año. La base de datos venía en cuatro tablas, cada uno contenía la información trimestral de recorridos, así que decidí limpiarla y unificar todos los datos en una sola y utilizar esa tabla limpia durante todo el análisis. Cada fila es el registro de un recorrido que hizo un usuario, entonces, para conocer el total de viajes. Contabilicé las filas en la consulta y lo filtré por tipo de usuario. Después, dividí la cantidad de viajes por usuario por el total de viajes para obtener el porcentaje.
 
 ```sql
 SELECT
@@ -202,8 +201,7 @@ Aquí tienes un desglose de los resultados para las estaciones que tiene mayor p
     1. Distrito financiero: Canal St & Adams St, Clinton St & Washington Blvd, Clinton St & Madison St, Columbus Dr & Randolph St, Franklin St & Monroe St, Daley Center Plaza, Canal St & Madison St, LaSalle St & Jackson Blvd.
     2. Esta preferencia indica que los **Miembros** utilizan las bicicletas principalmente para sus desplazamientos diarios, ya sea para ir al trabajo, hacer recados o realizar otras actividades en el centro de la ciudad.
 
-
-## 5. Patrones en las rutas que realizan los Clientes Ocasionales y Miemebros en 2019
+## 5. Patrones en las rutas que realizan los Clientes Ocasionales y Miembros en 2019
 
 Explorar las rutas que realizaron cada tipo de usuario conociendo las estaciones de salida y de llegada que prefirieron, y así conocer su preferencia de uso. Conociendo la cantidad de viajes realizados y el tiempo promedio. Como en el punto anterior, se realizaron dos consultas, una para cada tipo de usuario.
 
@@ -274,7 +272,7 @@ puntos dentro de un área relativamente pequeña.
 
 ## 6. Los días de la semana que los Clientes Ocasionales y los Miembros prefieren viajar en 2019
 
-La consulta contabilizó y sumó los recorridos si fueron realizados por Cliente Ocasional o Miembro. Después, filtó la información con los días para observar la tendencia de viajes en una semana.
+La consulta contabilizó y sumó los recorridos si fueron realizados por Cliente Ocasional o Miembro. Después, se filtró la información con los días para observar la tendencia de viajes en una semana.
 
 ```sql
 SELECT
@@ -310,7 +308,7 @@ Aquí tienes el desglose de los viajes y el promedio de tiempo que realizó cada
 
 ## 7. Preferencias que tiene cada tipo de usuario para realizar viajes según las estaciones del año 2019 
 
-En esta consulta primero se agruparon con CASE los meses para crear las estaciones del año, después se sumaron los recorridos si fueron realizados por Clientes Ocasionales o Mimebros. Al final, los viajes realizados en cada temporada se dividieron con el total general para obtener el procentaje.
+En esta consulta primero se agruparon con CASE los meses para crear las estaciones del año, después se sumaron los recorridos si fueron realizados por Clientes Ocasionales o Miembros. Al final, los viajes realizados en cada temporada se dividieron con el total general para obtener el porcentaje.
 
 ```sql
 SELECT
@@ -343,7 +341,7 @@ favorecen el uso de bicicletas para actividades recreativas y turismo.
 
 *Gráfico de barras que representa los viajes que realizaron los dos tipos de usuario en cada estación del año; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
-## 8. Recorridos realizados mes con mes y el crecimiento mensual duarante el año 2019
+## 8. Recorridos realizados mes con mes y el crecimiento mensual durante el año 2019
 
 El análisis del crecimiento de los recorridos realizados al mes con el mes anterior es interesante para ver el interés de los usuarios por el servicio, para ello, primero se realizó una subconsulta con los viajes de cada usuario al mes. Enseguida, utilizamos las funciones LAG y OVER para establecer el mes previo y sus recorridos y así conocer la diferencia y el porcentaje con el mes que analizamos. 
 
@@ -380,7 +378,7 @@ tiempo.
 
 ![Crecimiento mensual viajes de Miembros](codigo_graficos/crecimiento_viajes_miembros.png)
 
-*Gráfico lineal que representa los viajes mensuales y el crecimiento mensual de los Miembtos en 2019; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
+*Gráfico lineal que representa los viajes mensuales y el crecimiento mensual de los Miembros en 2019; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
 ![Crecimiento mensual viajes ocasionales](codigo_graficos/crecimiento_viajes_ocasionales.png)
 
@@ -402,7 +400,7 @@ WHERE
     birthyear > 1943
 GROUP BY
     birthyear
-ORDER BY 1 ASc;
+ORDER BY 1;
 ```
 Aquí tienes el desglose de los viajes realizados por la edad de cada usuario en 2019:
 - **Concentración en jóvenes:** La mayoría de los viajes son realizados por personas entre 18 y 35 años, tanto para **Clientes Ocasionales** como para **Miembros**.
@@ -411,14 +409,14 @@ Aquí tienes el desglose de los viajes realizados por la edad de cada usuario en
 
 ![Histograma de edad en Miembros](codigo_graficos/Histograma_edad_miembros.png)
 
-*Histograma que representa los viajes de los Miembtos según su edad en 2019; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
+*Histograma que representa los viajes de los Miembros según su edad en 2019; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
 ![Histograma de edad en Clientes Ocasionales](codigo_graficos/Histograma_edad_ocasionales.png)
 
 *Histograma que representa los viajes de los Clientes Ocasionales según su edad en 2019; el gráfico se generó con Matplotlib a partir de los resultados de mi consulta SQL.*
 
-# Lo que apredí
-A lo largo del proyecto reafimé mis habilidades aprendidas en el curso, los pasos que se deben realizar en el análisis de datos: como plantear las preguntas, limpiar los datos, analizar los datos y crear las visualizaciones pertinentes. En cuanto a las herramientas reforcé mis conocimentos en:
+# Lo que aprendí
+A lo largo del proyecto reafirmé mis habilidades aprendidas en el curso, los pasos que se deben realizar en el análisis de datos: como plantear las preguntas, limpiar los datos, analizar los datos y crear las visualizaciones pertinentes. En cuanto a las herramientas reforcé mis conocimientos en:
 
 🧩 Creación de Consultas Complejas en SQL: Dominé el arte del SQL avanzado, utilizando subconsultas, funciones como CASE para filtrar si el dato se refiere a un Cliente Ocasional o un Miembro o para crear una columna de Estación del año a partir de los meses, también utilicé las funciones LAG y OVER para mostrar el crecimiento en los viajes realizados mes con mes. Y también funciones de agregación como COUNT(), AVG(), y SUM().
 
@@ -430,7 +428,7 @@ A lo largo del proyecto reafimé mis habilidades aprendidas en el curso, los pas
 ## Insights
 
 Del análisis, surgieron varios Insights para establecer las diferencias entre Clientes Ocasionales y Miembros:
-- En cuanto a los viajes totales y al tiempo promedio de recorrido,los Miembros son los que realizaron una mayor cantidad de viajes con el 78% de los recorridos mientras los Clientes Ocasionales realizaron solo el 22%. Los viajes de los Clientes Ocasionales son más largos ya que en promedio cada viaje tiene una duración de 58.44 min, a diferencia de los Clientes Ocasionales que cada recorrido dura en promedio 14.26 min. Lo que significa que los Miembros utilizan el servicio de Cyclistics para traslados diarios y cortos, mientras los Clientes Ocasionales prefieren realizar paseos más largos y ocasionales.
+- En cuanto a los viajes totales y al tiempo promedio de recorrido, los Miembros son los que realizaron una mayor cantidad de viajes con el 78% de los recorridos mientras los Clientes Ocasionales realizaron solo el 22%. Los viajes de los Clientes Ocasionales son más largos ya que en promedio cada viaje tiene una duración de 58.44 min, a diferencia de los Clientes Ocasionales que cada recorrido dura en promedio 14.26 min. Lo que significa que los Miembros utilizan el servicio de Cyclistics para traslados diarios y cortos, mientras los Clientes Ocasionales prefieren realizar paseos más largos y ocasionales.
 
 - Otra diferencia se encuentra en el uso diario del servicio y en las horas pico de los viajes. Los Clientes Ocasionales prefieren los fines de semana para utilizar las bicicletas ya que esos días son los más altos en la cantidad de viajes. Además, durante el día, la mañana y el medio día es su horario de preferencia. Los Miembros suelen viajar más en días hábiles para dirigirse a su trabajo o realizar viajes cortos y eso se muestra en la preferencia hacia los días y horarios laborables (Lunes a Viernes de 7 a 9 am y de 5 a 7 pm).
 
@@ -440,13 +438,13 @@ Del análisis, surgieron varios Insights para establecer las diferencias entre C
 
 - La siguiente diferencia está en las rutas, los Miembros suelen realizar rutas más cortas y directas, conectando principalmente zonas de trabajo y residenciales. Los Clientes Ocasionales, por su parte, prefieren rutas más largas y exploratorias, a menudo en zonas turísticas e incluso salen y regresan de la misma estación.
 
-- La última diferencia que hay en los patrones de uso en el servicio de Cyclistics es en la edad, aunque no es muy notoria como los demas, la mayor cantidad de recorridos que realizaron los Miembros fueron hecho pos adultos de 27 a 30 añ0s, en cambio, los Clientes Ocasionales fueron adultos de 24 a 27 años.
+- La última diferencia que hay en los patrones de uso en el servicio de Cyclistics es en la edad, aunque no es muy notoria como los demás, la mayor cantidad de recorridos que realizaron los Miembros fueron hecho pos adultos de 27 a 30 añ0s, en cambio, los Clientes Ocasionales fueron adultos de 24 a 27 años.
 
 - El clima afecta el uso del servicio, ya que los meses más cálidos son donde se concentraron la mayor cantidad de recorridos y en la temporada de otoño e invierno se reduce drásticamente, eso afecta al crecimiento mensual de los viajes sin importar el tipo de usuario.
 
 - Como conclusión, la principal diferencia que existe entre Miembros y Clientes Ocasionales es el motivo de uso, los primeros prefieren realizar recorridos cortos para trasladarse a su trabajo mientras los segundo prefieren utilizar el servicio como ocio.
 
-- En cuanto la estrategia de Marketing funcionaria realizar eventos como paseo o recorridos casuales para presentar las ventajas que significaria obtener la mebresia anual y también colocar anuncios publicitarios en las zonas que son más utilizadas por los Clientes Ocasionales, además de presentar las ventajas de obtener una suscripción para utilizar de forma constante la bicicleta y no verla como una herramienta de entretenimiento sino como un medio de transporte en la ciudad.
+- En cuanto la estrategia de Marketing funcionaria realizar eventos como paseo o recorridos casuales para presentar las ventajas que significaría obtener la membresía anual y también colocar anuncios publicitarios en las zonas que son más utilizadas por los Clientes Ocasionales, además de presentar las ventajas de obtener una suscripción para utilizar de forma constante la bicicleta y no verla como una herramienta de entretenimiento sino como un medio de transporte en la ciudad.
 
 # Reflexiones Finales
 Este proyecto lo desarrollé para mejorar mis habilidades en las herramientas de análisis de datos como Excel y SQL para proporcionar valiosas ideas sobre las diferencias entre los Clientes Ocasionales y Miembros. Los hallazgos servirán como guía a la empresa Cyclistics para conocer los patrones que hay entre sus usuarios y sus diferencias y así crear las campañas pertinentes para seguir creciendo y obtener una mayor cantidad de Miembros.
